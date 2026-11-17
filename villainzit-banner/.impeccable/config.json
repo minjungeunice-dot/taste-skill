@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "low-contrast",
+        "value": "*",
+        "files": [
+          "villainzit-banner/banner.html"
+        ],
+        "createdAt": "2026-11-17T15:56:55.512Z",
+        "reason": "Claude: label text sits on paper/crimson drawn by ::before pseudo-elements the checker can't see; rendered contrast is dark-on-paper and white-on-crimson"
+      }
+    ]
+  }
+}

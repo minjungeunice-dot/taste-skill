@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>빌런짓 배너</title>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=East+Sea+Dokdo&family=Permanent+Marker&display=block" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0b0a0b; --paper:#e9e3df; --crimson:#9e1830; --blood:#d4153a; --wine:#5a0f1e;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:2560px;height:1440px;background:var(--ink);overflow:hidden}
+  #stage{position:relative;width:2560px;height:1440px;overflow:hidden;
+    background:
+      radial-gradient(ellipse 60% 55% at 50% 50%, #1d1517 0%, #0e0b0c 60%, #070606 100%);}
+  svg.full{position:absolute;inset:0;width:2560px;height:1440px}
+  .abs{position:absolute}
+
+  /* ---------- logo ---------- */
+  #logo{position:absolute;left:560px;top:540px;width:860px;height:400px;transform:scale(.86);transform-origin:left top}
+  #logo .word{position:absolute;left:40px;top:58px;font-family:'Black Han Sans';font-size:300px;line-height:1;
+    letter-spacing:-6px;color:var(--paper);transform:rotate(-5deg) skewX(-8deg);transform-origin:left bottom;
+    filter:url(#distress);
+    text-shadow:10px 10px 0 var(--blood), 18px 18px 0 #000;}
+  #tape-en{position:absolute;left:330px;top:300px;transform:rotate(-4deg);padding:6px 46px 2px 40px}
+  #tape-en::before{background:var(--paper)}
+  #tape-en span{font-family:'Permanent Marker';font-size:82px;color:var(--blood);line-height:1;letter-spacing:1px;
+    display:block;filter:url(#distress-sm)}
+  #tape-en span b{font-weight:400;color:#7d0c20;font-size:62px}
+
+  /* ---------- right copy ---------- */
+  #copy{position:absolute;left:1290px;top:585px;width:760px}
+  .label,.cta,#tape-en{isolation:isolate}
+  .label::before,.cta::before,#tape-en::before{content:"";position:absolute;inset:0;z-index:-1;filter:url(#rough)}
+  .label{position:relative;display:inline-block;padding:18px 34px 12px;transform:rotate(-2deg);white-space:nowrap}
+  .label::before{background:var(--paper)}
+  .label span{font-family:'Do Hyeon';font-size:54px;color:#141012;letter-spacing:-1px;white-space:nowrap}
+  .label .tri{display:inline-block;width:0;height:0;border-left:30px solid var(--blood);border-top:19px solid transparent;border-bottom:19px solid transparent;margin-left:20px;vertical-align:4px}
+  .cta{position:relative;display:inline-block;margin-top:40px;margin-left:120px;padding:8px 38px 2px;transform:rotate(-4deg)}
+  .cta::before{background:var(--crimson)}
+  .cta span{font-family:'East Sea Dokdo';font-size:86px;line-height:1;color:#fff4f2;white-space:nowrap}
+
+  /* checker tape */
+  .checker{position:absolute;height:64px;
+    background-color:#e8e2de;
+    background-image:conic-gradient(#121012 25%, transparent 0 50%, #121012 0 75%, transparent 0);
+    background-size:64px 64px;filter:url(#rough);opacity:.92}
+  .film{position:absolute;width:440px;height:330px;background:#1a1718;filter:url(#rough);
+    border-top:34px solid #cfc9c6;border-bottom:34px solid #cfc9c6;}
+  .film::before,.film::after{content:"";position:absolute;left:10px;right:10px;height:16px;
+    background:repeating-linear-gradient(90deg,#1a1718 0 22px,transparent 22px 40px)}
+  .film::before{top:-25px}.film::after{bottom:-25px}
+  .film i{position:absolute;inset:14px;background:
+    radial-gradient(ellipse at 30% 40%, #4a4446 0%, #221e1f 60%),#221e1f;filter:url(#cloud)}
+  #guide{display:none}
+  body.guide #guide{display:block}
+</style>
+</head>
+<body>
+<div id="stage">
+
+<!-- ======= defs + background textures ======= -->
+<svg class="full" viewBox="0 0 2560 1440">
+  <defs>
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" seed="4"/>
+      <feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .55 -.18"/>
+    </filter>
+    <filter id="grime" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency=".012" numOctaves="5" seed="11"/>
+      <feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.2 1.25"/>
+    </filter>
+    <!-- distressed letterforms: punch noise holes + chew edges -->
+    <filter id="distress" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency=".055" numOctaves="4" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="4" result="d"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".18" numOctaves="2" seed="3" result="h"/>
+      <feColorMatrix in="h" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -16 11.4" result="holes"/>
+      <feComposite in="d" in2="holes" operator="in" result="cut"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="9" result="g"/>
+      <feColorMatrix in="g" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -8 7.3" result="g2"/>
+      <feComposite in="cut" in2="g2" operator="in"/>
+    </filter>
+    <filter id="distress-sm" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency=".25" numOctaves="2" seed="5" result="h"/>
+      <feColorMatrix in="h" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -14 10" result="holes"/>
+      <feComposite in="SourceGraphic" in2="holes" operator="in"/>
+    </filter>
+    <filter id="rough" x="-5%" y="-10%" width="110%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency=".08" numOctaves="3" seed="2" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="12"/>
+    </filter>
+    <filter id="cloud"><feTurbulence type="fractalNoise" baseFrequency=".02" numOctaves="4" seed="21"/>
+      <feColorMatrix values="0 0 0 0 .32  0 0 0 0 .3  0 0 0 0 .31  0 0 0 .9 0"/></filter>
+    <filter id="brush" x="-5%" y="-20%" width="110%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency=".6" numOctaves="2" seed="13" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="5" result="d"/>
+      <feColorMatrix in="n" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -3 2.1" result="m"/>
+      <feComposite in="d" in2="m" operator="in"/>
+    </filter>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6"/></filter>
+    <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">
+      <circle cx="11" cy="11" r="4.2" fill="#000" opacity=".55"/>
+    </pattern>
+    <pattern id="dotsLight" width="18" height="18" patternUnits="userSpaceOnUse">
+      <circle cx="9" cy="9" r="2.6" fill="#fff" opacity=".07"/>
+    </pattern>
+    <linearGradient id="fadeR" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="1"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <mask id="dotFade"><rect x="1500" y="140" width="900" height="380" fill="url(#fadeR)"/></mask>
+  </defs>
+
+  <!-- halftone wash in the dark field -->
+  <rect x="1500" y="140" width="900" height="380" fill="url(#dotsLight)" mask="url(#dotFade)"/>
+  <rect x="180" y="800" width="700" height="300" fill="url(#dotsLight)" opacity=".8"/>
+
+  <!-- torn layers are injected here -->
+  <g id="torn"></g>
+
+  <!-- red slash scratches -->
+  <g stroke="#d4153a" stroke-linecap="round" fill="none" filter="url(#brush)" opacity=".85">
+    <path d="M300 520 L760 300" stroke-width="10"/>
+    <path d="M330 560 L700 380" stroke-width="4"/>
+    <path d="M1880 980 L2290 780" stroke-width="9"/>
+    <path d="M1930 1010 L2230 860" stroke-width="3"/>
+  </g>
+</svg>
+
+<!-- film frames + checker tape at the far edges (decor only, outside safe area) -->
+<div class="film" style="left:2140px;top:120px;transform:rotate(7deg)"><i></i></div>
+<div class="film" style="left:-40px;top:1010px;transform:rotate(-6deg)"><i></i></div>
+<div class="checker" style="left:-60px;top:250px;width:520px;transform:rotate(-14deg)"></div>
+<div class="checker" style="left:2080px;top:1130px;width:560px;transform:rotate(-10deg)"></div>
+<div class="checker" style="left:1960px;top:40px;width:300px;height:48px;background-size:48px 48px;transform:rotate(18deg)"></div>
+
+<!-- doodles -->
+<svg class="full" viewBox="0 0 2560 1440" fill="none" stroke="#f1ebe8" stroke-linecap="round" stroke-linejoin="round">
+  <g filter="url(#brush)">
+    <!-- big scribble star -->
+    <path d="M330 760 L392 590 L440 760 L290 655 L480 650 Z" stroke-width="7"/>
+    <path d="M338 752 L396 602 L432 750 L300 662 L470 660 Z" stroke-width="3" opacity=".7"/>
+    <!-- small star -->
+    <path d="M2210 690 L2236 618 L2258 690 L2196 646 L2276 644 Z" stroke-width="5"/>
+    <!-- lightning -->
+    <path d="M2150 470 L2108 560 L2150 556 L2112 650" stroke-width="7"/>
+    <!-- heart (crimson) -->
+    <path d="M450 980 C 400 930 430 880 470 905 C 500 870 545 905 515 950 L470 1010 Z" stroke="#e0244a" stroke-width="7"/>
+    <!-- underline swoosh under CTA -->
+  </g>
+</svg>
+
+<!-- ======= LOGO ======= -->
+<div id="logo">
+  <!-- red orbit ring behind the word -->
+  <svg class="abs" style="left:-80px;top:-30px;width:1020px;height:460px;overflow:visible" viewBox="0 0 1020 460" fill="none">
+    <g filter="url(#brush)">
+      <path d="M140 330 C -40 250 120 90 520 70 C 880 55 1030 150 930 240" stroke="#d4153a" stroke-width="14" stroke-linecap="round"/>
+      <path d="M150 320 C 10 240 160 110 520 92 C 840 80 980 160 900 230" stroke="#9e1830" stroke-width="5" stroke-linecap="round"/>
+    </g>
+  </svg>
+  <div class="word">빌런짓</div>
+  <!-- the front arc of the ring passes over the word -->
+  <svg class="abs" style="left:-80px;top:-30px;width:1020px;height:460px;overflow:visible" viewBox="0 0 1020 460" fill="none">
+    <g filter="url(#brush)">
+      <path d="M930 240 C 870 330 560 400 300 380 C 220 372 170 355 140 330" stroke="#d4153a" stroke-width="14" stroke-linecap="round"/>
+    </g>
+  </svg>
+  <!-- crown -->
+  <svg class="abs" style="left:70px;top:-58px;width:200px;height:130px;transform:rotate(-12deg)" viewBox="0 0 200 130" fill="none">
+    <path d="M18 112 L10 30 L62 72 L100 8 L138 72 L190 30 L180 112 Z" stroke="#e0244a" stroke-width="12" stroke-linejoin="round" filter="url(#brush)"/>
+  </svg>
+  <div id="tape-en"><span>VILLAIN<b>zit</b></span></div>
+</div>
+
+<!-- ======= COPY ======= -->
+<div id="copy">
+  <div class="label"><span>빌런즈가 놀고먹는 런닝타임</span><i class="tri"></i></div><br>
+  <div class="cta"><span>뭔 짓 하는지 보러오세요</span></div>
+</div>
+
+<!-- sparkles -->
+<svg class="full" viewBox="0 0 2560 1440" style="mix-blend-mode:screen">
+  <g fill="#ff4d6d">
+    <circle cx="1095" cy="560" r="16" filter="url(#glow)"/>
+    <path d="M1095 520 L1099 556 L1135 560 L1099 564 L1095 600 L1091 564 L1055 560 L1091 556Z" fill="#fff"/>
+    <circle cx="1418" cy="866" r="12" filter="url(#glow)"/>
+    <path d="M1418 838 L1421 863 L1446 866 L1421 869 L1418 894 L1415 869 L1390 866 L1415 863Z" fill="#fff"/>
+  </g>
+</svg>
+
+<!-- global grain + grime on top -->
+<svg class="full" viewBox="0 0 2560 1440" style="pointer-events:none">
+  <rect width="2560" height="1440" filter="url(#grime)" opacity=".28"/>
+  <rect width="2560" height="1440" filter="url(#grain)" opacity=".35" style="mix-blend-mode:overlay"/>
+</svg>
+
+<!-- safe-area guide (preview only) -->
+<svg id="guide" class="full" viewBox="0 0 2560 1440" fill="none">
+  <rect x="507" y="508.5" width="1546" height="423" stroke="#00e5ff" stroke-width="4" stroke-dasharray="16 10"/>
+  <rect x="0" y="508.5" width="2560" height="423" stroke="#ffe600" stroke-width="3" stroke-dasharray="6 8"/>
+  <text x="520" y="500" fill="#00e5ff" font-size="28" font-family="sans-serif">모든 기기 안전영역 1546×423</text>
+  <text x="12" y="500" fill="#ffe600" font-size="28" font-family="sans-serif">데스크톱 노출 영역</text>
+</svg>
+</div>
+
+<script>
+// seeded random so the render is reproducible
+let s = 1337; const rnd = () => (s = (s * 16807) % 2147483647) / 2147483647;
+// a torn edge between two points; jag amplitude in px
+function tornEdge(x1,y1,x2,y2,amp,step){
+  const pts=[], dx=x2-x1, dy=y2-y1, len=Math.hypot(dx,dy), n=Math.ceil(len/step);
+  const nx=-dy/len, ny=dx/len;
+  let w=0;
+  for(let i=0;i<=n;i++){const t=i/n; w=w*.82+(rnd()-.5)*amp*.55; const o=(w+(rnd()-.5)*amp*.35)*(i===0||i===n?0:1);
+    pts.push([x1+dx*t+nx*o, y1+dy*t+ny*o]);}
+  return pts;
+}
+function poly(edge, closeTo){ return 'M'+edge.concat(closeTo).map(p=>p.map(v=>v.toFixed(1)).join(' ')).join(' L')+' Z'; }
+const NS='http://www.w3.org/2000/svg', g=document.getElementById('torn');
+function add(d,fill,extra={}){const p=document.createElementNS(NS,'path');p.setAttribute('d',d);p.setAttribute('fill',fill);
+  for(const k in extra)p.setAttribute(k,extra[k]);g.appendChild(p);return p;}
+
+// ---- TOP band: paper (light) under crimson, both with ragged bottom edges
+add(poly(tornEdge(-20,330,2580,200,26,5),[[2580,-20],[-20,-20]]),'#bdb5b2');
+add(poly(tornEdge(-20,300,2580,170,34,6),[[2580,-20],[-20,-20]]),'#8a1428');
+add(poly(tornEdge(-20,300,2580,170,34,6),[[2580,-20],[-20,-20]]),'url(#dots)',{opacity:.6});
+add(poly(tornEdge(-20,210,1300,90,30,6),[[1300,-20],[-20,-20]]),'#5a0f1e');
+add(poly(tornEdge(-20,150,700,40,22,5),[[700,-20],[-20,-20]]),'#2a2224');
+
+// ---- BOTTOM band
+add(poly(tornEdge(-20,1150,2580,1250,26,5),[[2580,1460],[-20,1460]]),'#c4bcb9');
+add(poly(tornEdge(-20,1180,2580,1275,36,6),[[2580,1460],[-20,1460]]),'#8a1428');
+add(poly(tornEdge(-20,1180,2580,1275,36,6),[[2580,1460],[-20,1460]]),'url(#dots)',{opacity:.6});
+add(poly(tornEdge(1100,1330,2580,1300,30,6),[[2580,1460],[1100,1460]]),'#5a0f1e');
+add(poly(tornEdge(-20,1340,900,1390,24,5),[[900,1460],[-20,1460]]),'#1f1a1b');
+
+// grime over the paper bands
+const r=document.createElementNS(NS,'rect');r.setAttribute('width',2560);r.setAttribute('height',1440);
+r.setAttribute('filter','url(#grime)');r.setAttribute('opacity','.0');g.appendChild(r);
+
+if(location.hash==='#guide')document.body.classList.add('guide');
+document.fonts.ready.then(()=>{document.body.dataset.ready='1'});
+</script>
+</body>
+</html>
