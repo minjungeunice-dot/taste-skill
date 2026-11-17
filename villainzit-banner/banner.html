@@ -16,42 +16,40 @@
   svg.full{position:absolute;inset:0;width:2560px;height:1440px}
   .abs{position:absolute}
 
-  /* ---------- logo ---------- */
-  #logo{position:absolute;left:560px;top:540px;width:860px;height:400px;transform:scale(.86);transform-origin:left top}
-  #logo .word{position:absolute;left:40px;top:58px;font-family:'Black Han Sans';font-size:300px;line-height:1;
-    letter-spacing:-6px;color:var(--paper);transform:rotate(-5deg) skewX(-8deg);transform-origin:left bottom;
+  /* ---------- logo (centered) ---------- */
+  #logo{position:absolute;left:830px;top:528px;width:900px;height:400px}
+  #logo .word{position:absolute;left:0;right:0;top:22px;text-align:center;font-family:'Black Han Sans';font-size:335px;line-height:1;
+    letter-spacing:-8px;color:var(--paper);transform:rotate(-4deg) skewX(-7deg);
     filter:url(#distress);
     text-shadow:10px 10px 0 var(--blood), 18px 18px 0 #000;}
-  #tape-en{position:absolute;left:330px;top:300px;transform:rotate(-4deg);padding:6px 46px 2px 40px}
+  #tape-en{position:absolute;left:480px;top:318px;transform:rotate(-4deg);padding:6px 40px 2px 36px}
   #tape-en::before{background:var(--paper)}
-  #tape-en span{font-family:'Permanent Marker';font-size:82px;color:var(--blood);line-height:1;letter-spacing:1px;
+  #tape-en span{font-family:'Permanent Marker';font-size:74px;color:var(--blood);line-height:1;letter-spacing:1px;
     display:block;filter:url(#distress-sm)}
-  #tape-en span b{font-weight:400;color:#7d0c20;font-size:62px}
+  #tape-en span b{font-weight:400;color:#7d0c20;font-size:56px}
 
-  /* ---------- right copy ---------- */
-  #copy{position:absolute;left:1290px;top:585px;width:760px}
+  /* ---------- flanking copy ---------- */
   .label,.cta,#tape-en{isolation:isolate}
   .label::before,.cta::before,#tape-en::before{content:"";position:absolute;inset:0;z-index:-1;filter:url(#rough)}
-  .label{position:relative;display:inline-block;padding:18px 34px 12px;transform:rotate(-2deg);white-space:nowrap}
+  .label{position:absolute;left:522px;top:640px;padding:16px 26px 10px;transform:rotate(-5deg);white-space:nowrap}
   .label::before{background:var(--paper)}
-  .label span{font-family:'Do Hyeon';font-size:54px;color:#141012;letter-spacing:-1px;white-space:nowrap}
-  .label .tri{display:inline-block;width:0;height:0;border-left:30px solid var(--blood);border-top:19px solid transparent;border-bottom:19px solid transparent;margin-left:20px;vertical-align:4px}
-  .cta{position:relative;display:inline-block;margin-top:40px;margin-left:120px;padding:8px 38px 2px;transform:rotate(-4deg)}
+  .label span{display:block;font-family:'Do Hyeon';font-size:44px;line-height:1.15;color:#141012;letter-spacing:-1px}
+  .label span em{font-style:normal;color:var(--blood)}
+  .cta{position:absolute;left:1752px;top:625px;padding:10px 30px 4px;transform:rotate(5deg);white-space:nowrap}
   .cta::before{background:var(--crimson)}
-  .cta span{font-family:'East Sea Dokdo';font-size:86px;line-height:1;color:#fff4f2;white-space:nowrap}
+  .cta span{display:block;font-family:'East Sea Dokdo';font-size:74px;line-height:.95;color:#fff4f2}
 
-  /* checker tape */
-  .checker{position:absolute;height:64px;
-    background-color:#e8e2de;
-    background-image:conic-gradient(#121012 25%, transparent 0 50%, #121012 0 75%, transparent 0);
-    background-size:64px 64px;filter:url(#rough);opacity:.92}
-  .film{position:absolute;width:440px;height:330px;background:#1a1718;filter:url(#rough);
-    border-top:34px solid #cfc9c6;border-bottom:34px solid #cfc9c6;}
-  .film::before,.film::after{content:"";position:absolute;left:10px;right:10px;height:16px;
-    background:repeating-linear-gradient(90deg,#1a1718 0 22px,transparent 22px 40px)}
-  .film::before{top:-25px}.film::after{bottom:-25px}
-  .film i{position:absolute;inset:14px;background:
-    radial-gradient(ellipse at 30% 40%, #4a4446 0%, #221e1f 60%),#221e1f;filter:url(#cloud)}
+  /* ---------- amp stacks (stage, outside safe area) ---------- */
+  .amp{position:absolute;width:330px;filter:url(#rough)}
+  .amp .head{height:104px;background:#1b1819;border:10px solid #2c2729;border-radius:8px 8px 2px 2px;position:relative}
+  .amp .head::before{content:"";position:absolute;left:18px;right:18px;top:16px;height:22px;background:var(--crimson);border-radius:2px}
+  .amp .head::after{content:"";position:absolute;left:24px;right:24px;bottom:14px;height:22px;
+    background:radial-gradient(circle,#d8d2cf 0 7px,#555 8px 9px,transparent 10px) 0 0/40px 22px repeat-x}
+  .amp .cab{height:400px;margin-top:6px;border:14px solid #2c2729;border-radius:4px;position:relative;
+    background:
+      radial-gradient(circle at 50% 28%, #0c0a0b 0 70px, #2a2627 72px 80px, transparent 82px),
+      radial-gradient(circle at 50% 74%, #0c0a0b 0 70px, #2a2627 72px 80px, transparent 82px),
+      repeating-linear-gradient(45deg,#151213 0 3px,#24201f 3px 6px),#151213}
   #guide{display:none}
   body.guide #guide{display:block}
 </style>
@@ -78,7 +76,7 @@
       <feColorMatrix in="h" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -16 11.4" result="holes"/>
       <feComposite in="d" in2="holes" operator="in" result="cut"/>
       <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="9" result="g"/>
-      <feColorMatrix in="g" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -8 7.3" result="g2"/>
+      <feColorMatrix in="g" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -12 11.4" result="g2"/>
       <feComposite in="cut" in2="g2" operator="in"/>
     </filter>
     <filter id="distress-sm" x="-5%" y="-5%" width="110%" height="110%">
@@ -111,7 +109,7 @@
 
   <!-- halftone wash in the dark field -->
   <rect x="1500" y="140" width="900" height="380" fill="url(#dotsLight)" mask="url(#dotFade)"/>
-  <rect x="180" y="800" width="700" height="300" fill="url(#dotsLight)" opacity=".8"/>
+  
 
   <!-- torn layers are injected here -->
   <g id="torn"></g>
@@ -125,65 +123,95 @@
   </g>
 </svg>
 
-<!-- film frames + checker tape at the far edges (decor only, outside safe area) -->
-<div class="film" style="left:2140px;top:120px;transform:rotate(7deg)"><i></i></div>
-<div class="film" style="left:-40px;top:1010px;transform:rotate(-6deg)"><i></i></div>
-<div class="checker" style="left:-60px;top:250px;width:520px;transform:rotate(-14deg)"></div>
-<div class="checker" style="left:2080px;top:1130px;width:560px;transform:rotate(-10deg)"></div>
-<div class="checker" style="left:1960px;top:40px;width:300px;height:48px;background-size:48px 48px;transform:rotate(18deg)"></div>
+<!-- stage lights -->
+<svg class="full" viewBox="0 0 2560 1440" style="mix-blend-mode:screen">
+  <defs>
+    <linearGradient id="beamR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff2a50" stop-opacity=".55"/><stop offset="1" stop-color="#ff2a50" stop-opacity="0"/></linearGradient>
+    <linearGradient id="beamW" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".32"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <filter id="beamBlur" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="18"/></filter>
+  </defs>
+  <g filter="url(#beamBlur)">
+    <polygon points="760,150 800,150 1300,1150 820,1150" fill="url(#beamR)"/>
+    <polygon points="1800,140 1840,140 1760,1150 1270,1150" fill="url(#beamR)"/>
+    <polygon points="1262,120 1298,120 1520,1100 1040,1100" fill="url(#beamW)"/>
+  </g>
+  <g fill="#fff"><circle cx="780" cy="150" r="10"/><circle cx="1820" cy="140" r="10"/><circle cx="1280" cy="120" r="8"/></g>
+  <g fill="#ff3355" filter="url(#glow)"><circle cx="780" cy="150" r="26"/><circle cx="1820" cy="140" r="26"/><circle cx="1280" cy="120" r="20" fill="#fff"/></g>
+</svg>
 
-<!-- doodles -->
+<!-- amp stacks -->
+<div class="amp" style="left:120px;top:668px;transform:rotate(-2deg)"><div class="head"></div><div class="cab"></div></div>
+<div class="amp" style="left:2110px;top:668px;transform:rotate(2deg)"><div class="head"></div><div class="cab"></div></div>
+
+<!-- crossed guitars + burst behind the logo -->
+<svg class="full" viewBox="0 0 2560 1440">
+  <defs>
+    <g id="guitar">
+      <path d="M20 0 C20 -80 70 -118 135 -112 C185 -108 200 -78 235 -74 C262 -72 280 -122 318 -112 C342 -104 330 -68 300 -38 L300 38 C330 66 345 100 322 112 C292 120 268 76 238 74 C200 72 185 108 135 112 C70 118 20 80 20 0Z"
+        fill="#2a0a12" stroke="#d4153a" stroke-width="6"/>
+      <rect x="296" y="-15" width="560" height="30" fill="#1c1517" stroke="#d4153a" stroke-width="5"/>
+      <path d="M852 -20 L965 -40 L982 -10 L965 18 L852 20Z" fill="#1c1517" stroke="#d4153a" stroke-width="5"/>
+      <g fill="#e9e3df"><circle cx="905" cy="-34" r="6"/><circle cx="935" cy="-38" r="6"/><circle cx="905" cy="26" r="6"/><circle cx="935" cy="22" r="6"/></g>
+      <rect x="120" y="-38" width="24" height="76" rx="4" fill="#e9e3df"/>
+      <rect x="196" y="-38" width="24" height="76" rx="4" fill="#e9e3df"/>
+      <rect x="70" y="-30" width="16" height="60" fill="#8f8a88"/>
+      <g stroke="#e9e3df" stroke-width="1.5" opacity=".75"><path d="M78 -10 H860M78 -3.5 H860M78 3.5 H860M78 10 H860"/></g>
+      <path d="M60 60 L110 95" stroke="#e9e3df" stroke-width="4" stroke-linecap="round"/>
+    </g>
+  </defs>
+  <!-- jagged burst -->
+  <g filter="url(#rough)"><path id="burst" fill="#5a0f1e" stroke="#d4153a" stroke-width="6" opacity=".8"/></g>
+  <g>
+    <use href="#guitar" transform="translate(1280 735) rotate(-26) scale(1.18) translate(-500 0)"/>
+    <use href="#guitar" transform="translate(1280 735) rotate(26) scale(-1.18 1.18) translate(-500 0)"/>
+  </g>
+</svg>
+
+<!-- doodles (rock bits only) -->
 <svg class="full" viewBox="0 0 2560 1440" fill="none" stroke="#f1ebe8" stroke-linecap="round" stroke-linejoin="round">
   <g filter="url(#brush)">
-    <!-- big scribble star -->
-    <path d="M330 760 L392 590 L440 760 L290 655 L480 650 Z" stroke-width="7"/>
-    <path d="M338 752 L396 602 L432 750 L300 662 L470 660 Z" stroke-width="3" opacity=".7"/>
-    <!-- small star -->
-    <path d="M2210 690 L2236 618 L2258 690 L2196 646 L2276 644 Z" stroke-width="5"/>
-    <!-- lightning -->
-    <path d="M2150 470 L2108 560 L2150 556 L2112 650" stroke-width="7"/>
-    <!-- heart (crimson) -->
-    <path d="M450 980 C 400 930 430 880 470 905 C 500 870 545 905 515 950 L470 1010 Z" stroke="#e0244a" stroke-width="7"/>
-    <!-- underline swoosh under CTA -->
+    <path d="M610 590 L640 512 L662 590 L592 542 L684 540 Z" stroke-width="6"/>
+    <path d="M1940 900 L1962 842 L1980 900 L1928 864 L1994 862 Z" stroke-width="5"/>
+  </g>
+  <!-- solid lightning bolts -->
+  <g stroke="none">
+    <path d="M1700 520 L1640 640 L1688 636 L1634 760 L1748 600 L1700 604 L1748 520Z" fill="#d4153a" transform="translate(28 -38)" opacity=".9"/>
+    <path d="M1700 520 L1640 640 L1688 636 L1634 760 L1748 600 L1700 604 L1748 520Z" fill="#f1ebe8" transform="translate(20 -46)"/>
+    <path d="M880 800 L846 868 L874 866 L842 936 L908 846 L880 848 L908 800Z" fill="#d4153a"/>
   </g>
 </svg>
 
 <!-- ======= LOGO ======= -->
 <div id="logo">
-  <!-- red orbit ring behind the word -->
-  <svg class="abs" style="left:-80px;top:-30px;width:1020px;height:460px;overflow:visible" viewBox="0 0 1020 460" fill="none">
+  <svg class="abs" style="left:-60px;top:-30px;width:1020px;height:460px;overflow:visible" viewBox="0 0 1020 460" fill="none">
     <g filter="url(#brush)">
       <path d="M140 330 C -40 250 120 90 520 70 C 880 55 1030 150 930 240" stroke="#d4153a" stroke-width="14" stroke-linecap="round"/>
       <path d="M150 320 C 10 240 160 110 520 92 C 840 80 980 160 900 230" stroke="#9e1830" stroke-width="5" stroke-linecap="round"/>
     </g>
   </svg>
   <div class="word">빌런짓</div>
-  <!-- the front arc of the ring passes over the word -->
-  <svg class="abs" style="left:-80px;top:-30px;width:1020px;height:460px;overflow:visible" viewBox="0 0 1020 460" fill="none">
+  <svg class="abs" style="left:-60px;top:-30px;width:1020px;height:460px;overflow:visible" viewBox="0 0 1020 460" fill="none">
     <g filter="url(#brush)">
       <path d="M930 240 C 870 330 560 400 300 380 C 220 372 170 355 140 330" stroke="#d4153a" stroke-width="14" stroke-linecap="round"/>
     </g>
   </svg>
-  <!-- crown -->
-  <svg class="abs" style="left:70px;top:-58px;width:200px;height:130px;transform:rotate(-12deg)" viewBox="0 0 200 130" fill="none">
+  <svg class="abs" style="left:96px;top:-26px;width:180px;height:118px;transform:rotate(-12deg)" viewBox="0 0 200 130" fill="none">
     <path d="M18 112 L10 30 L62 72 L100 8 L138 72 L190 30 L180 112 Z" stroke="#e0244a" stroke-width="12" stroke-linejoin="round" filter="url(#brush)"/>
   </svg>
   <div id="tape-en"><span>VILLAIN<b>zit</b></span></div>
 </div>
 
 <!-- ======= COPY ======= -->
-<div id="copy">
-  <div class="label"><span>빌런즈가 놀고먹는 런닝타임</span><i class="tri"></i></div><br>
-  <div class="cta"><span>뭔 짓 하는지 보러오세요</span></div>
-</div>
+<div class="label"><span>빌런즈가 놀고먹는</span><span><em>런닝타임</em> ▶</span></div>
+<div class="cta"><span>뭔 짓 하는지</span><span>보러오세요</span></div>
 
 <!-- sparkles -->
 <svg class="full" viewBox="0 0 2560 1440" style="mix-blend-mode:screen">
   <g fill="#ff4d6d">
-    <circle cx="1095" cy="560" r="16" filter="url(#glow)"/>
-    <path d="M1095 520 L1099 556 L1135 560 L1099 564 L1095 600 L1091 564 L1055 560 L1091 556Z" fill="#fff"/>
-    <circle cx="1418" cy="866" r="12" filter="url(#glow)"/>
-    <path d="M1418 838 L1421 863 L1446 866 L1421 869 L1418 894 L1415 869 L1390 866 L1415 863Z" fill="#fff"/>
+    <circle cx="1585" cy="575" r="16" filter="url(#glow)"/>
+    <path d="M1585 535 L1589 571 L1625 575 L1589 579 L1585 615 L1581 579 L1545 575 L1581 571Z" fill="#fff"/>
+    <circle cx="905" cy="600" r="12" filter="url(#glow)"/>
+    <path d="M905 572 L908 597 L933 600 L908 603 L905 628 L902 603 L877 600 L902 597Z" fill="#fff"/>
   </g>
 </svg>
 
@@ -237,6 +265,10 @@ add(poly(tornEdge(-20,1340,900,1390,24,5),[[900,1460],[-20,1460]]),'#1f1a1b');
 const r=document.createElementNS(NS,'rect');r.setAttribute('width',2560);r.setAttribute('height',1440);
 r.setAttribute('filter','url(#grime)');r.setAttribute('opacity','.0');g.appendChild(r);
 
+// jagged burst behind the word
+{let d='',n=34;for(let i=0;i<n;i++){const a=i/n*Math.PI*2-Math.PI/2,R=(i%2?240:330+rnd()*90)*1;
+ const x=1280+Math.cos(a)*R*1.45,y=715+Math.sin(a)*R*.72; d+=(i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1);}
+ document.getElementById('burst').setAttribute('d',d+'Z');}
 if(location.hash==='#guide')document.body.classList.add('guide');
 document.fonts.ready.then(()=>{document.body.dataset.ready='1'});
 </script>
