@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>빌런짓 프로필</title>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Permanent+Marker&display=block" rel="stylesheet">
+<style>
+:root{--paper:#e9e3df;--crimson:#9e1830;--blood:#d4153a}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:800px;height:800px;background:#070606;overflow:hidden}
+#stage{position:relative;width:800px;height:800px;overflow:hidden;background:radial-gradient(circle at 50% 48%,#2a1519 0%,#120c0d 45%,#070606 75%)}
+svg.full{position:absolute;inset:0;width:800px;height:800px}
+.abs{position:absolute}
+#word{position:absolute;left:0;right:0;top:262px;text-align:center;font-family:'Black Han Sans';font-size:218px;line-height:1;letter-spacing:-6px;
+  color:var(--paper);transform:rotate(-4deg) skewX(-7deg);filter:url(#distress);text-shadow:7px 7px 0 var(--blood),12px 12px 0 #000}
+#tape{position:absolute;left:50%;top:478px;transform:translateX(-46%) rotate(-4deg);padding:4px 28px 0 26px;isolation:isolate;white-space:nowrap}
+#tape::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--paper);filter:url(#rough)}
+#tape span{font-family:'Permanent Marker';font-size:58px;line-height:1;color:var(--blood);display:block;filter:url(#distress-sm)}
+#tape b{font-weight:400;color:#7d0c20;font-size:44px}
+#guide{display:none} body.guide #guide{display:block}
+</style></head><body><div id="stage">
+<svg class="full" viewBox="0 0 800 800">
+  <defs>
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" seed="4"/>
+      <feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .55 -.18"/>
+    </filter>
+    <filter id="grime" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency=".012" numOctaves="5" seed="11"/>
+      <feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.2 1.25"/>
+    </filter>
+    <!-- distressed letterforms: punch noise holes + chew edges -->
+    <filter id="distress" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency=".055" numOctaves="4" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="4" result="d"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".18" numOctaves="2" seed="3" result="h"/>
+      <feColorMatrix in="h" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -16 11.4" result="holes"/>
+      <feComposite in="d" in2="holes" operator="in" result="cut"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="9" result="g"/>
+      <feColorMatrix in="g" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -12 11.4" result="g2"/>
+      <feComposite in="cut" in2="g2" operator="in"/>
+    </filter>
+    <filter id="distress-sm" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency=".25" numOctaves="2" seed="5" result="h"/>
+      <feColorMatrix in="h" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -14 10" result="holes"/>
+      <feComposite in="SourceGraphic" in2="holes" operator="in"/>
+    </filter>
+    <filter id="rough" x="-5%" y="-10%" width="110%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency=".08" numOctaves="3" seed="2" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="12"/>
+    </filter>
+    <filter id="cloud"><feTurbulence type="fractalNoise" baseFrequency=".02" numOctaves="4" seed="21"/>
+      <feColorMatrix values="0 0 0 0 .32  0 0 0 0 .3  0 0 0 0 .31  0 0 0 .9 0"/></filter>
+    <filter id="brush" x="-5%" y="-20%" width="110%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency=".6" numOctaves="2" seed="13" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="5" result="d"/>
+      <feColorMatrix in="n" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -3 2.1" result="m"/>
+      <feComposite in="d" in2="m" operator="in"/>
+    </filter>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6"/></filter>
+    <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">
+      <circle cx="11" cy="11" r="4.2" fill="#000" opacity=".55"/>
+    </pattern>
+    <pattern id="dotsLight" width="18" height="18" patternUnits="userSpaceOnUse">
+      <circle cx="9" cy="9" r="2.6" fill="#fff" opacity=".07"/>
+    </pattern>
+    <linearGradient id="fadeR" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="1"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <mask id="dotFade"><rect x="1500" y="140" width="900" height="380" fill="url(#fadeR)"/></mask>
+  </defs>
+  <defs>
+    <linearGradient id="beamW" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff2a50" stop-opacity=".45"/><stop offset="1" stop-color="#ff2a50" stop-opacity="0"/></linearGradient>
+    <filter id="beamBlur" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="14"/></filter>
+    <g id="guitar">
+      <path d="M20 0 C20 -80 70 -118 135 -112 C185 -108 200 -78 235 -74 C262 -72 280 -122 318 -112 C342 -104 330 -68 300 -38 L300 38 C330 66 345 100 322 112 C292 120 268 76 238 74 C200 72 185 108 135 112 C70 118 20 80 20 0Z"
+        fill="#2a0a12" stroke="#d4153a" stroke-width="6"/>
+      <rect x="296" y="-15" width="560" height="30" fill="#1c1517" stroke="#d4153a" stroke-width="5"/>
+      <path d="M852 -20 L965 -40 L982 -10 L965 18 L852 20Z" fill="#1c1517" stroke="#d4153a" stroke-width="5"/>
+      <g fill="#e9e3df"><circle cx="905" cy="-34" r="6"/><circle cx="935" cy="-38" r="6"/><circle cx="905" cy="26" r="6"/><circle cx="935" cy="22" r="6"/></g>
+      <rect x="120" y="-38" width="24" height="76" rx="4" fill="#e9e3df"/>
+      <rect x="196" y="-38" width="24" height="76" rx="4" fill="#e9e3df"/>
+      <rect x="70" y="-30" width="16" height="60" fill="#8f8a88"/>
+      <g stroke="#e9e3df" stroke-width="1.5" opacity=".75"><path d="M78 -10 H860M78 -3.5 H860M78 3.5 H860M78 10 H860"/></g>
+      <path d="M60 60 L110 95" stroke="#e9e3df" stroke-width="4" stroke-linecap="round"/>
+    </g>
+    <!-- bass: offset body, long neck, 4 strings, inline tuners -->
+    <g id="bass">
+      <path d="M10 0 C10 -90 60 -130 140 -124 C190 -120 205 -92 245 -86 C275 -82 300 -140 345 -128 C372 -120 356 -78 320 -44 L320 44 C352 76 360 110 334 122 C300 130 276 92 245 88 C205 84 190 124 140 126 C60 130 10 90 10 0Z"
+        fill="#e9e3df" stroke="#d4153a" stroke-width="8"/>
+      <path d="M80 -70 C150 -96 230 -60 300 -40 L300 40 C230 60 150 96 80 70Z" fill="#1c1517"/>
+      <rect x="150" y="-44" width="30" height="88" rx="5" fill="#e9e3df" stroke="#1c1517" stroke-width="4"/>
+      <rect x="230" y="-40" width="26" height="80" rx="5" fill="#e9e3df" stroke="#1c1517" stroke-width="4"/>
+      <rect x="316" y="-17" width="700" height="34" fill="#1c1517" stroke="#d4153a" stroke-width="6"/>
+      <path d="M1012 -22 L1150 -30 C1170 -30 1176 -10 1166 0 L1150 24 L1012 22Z" fill="#1c1517" stroke="#d4153a" stroke-width="6"/>
+      <g fill="#e9e3df"><circle cx="1040" cy="-38" r="9"/><circle cx="1072" cy="-40" r="9"/><circle cx="1104" cy="-42" r="9"/><circle cx="1136" cy="-44" r="9"/></g>
+      <g stroke="#e9e3df" stroke-width="2.5" opacity=".85"><path d="M60 -10 H1020M60 -3.5 H1020M60 3.5 H1020M60 10 H1020"/></g>
+    </g>
+    <!-- synth keyboard -->
+    <g id="keys">
+      <rect x="0" y="0" width="360" height="150" rx="10" fill="#1c1517" stroke="#d4153a" stroke-width="6"/>
+      <rect x="14" y="14" width="332" height="10" fill="#9e1830"/>
+      <g fill="#e9e3df"><circle cx="30" cy="42" r="8"/><circle cx="56" cy="42" r="8"/><circle cx="82" cy="42" r="8"/><circle cx="108" cy="42" r="8"/></g>
+      <rect x="250" y="34" width="90" height="18" rx="3" fill="#d4153a"/>
+      <g id="wk"></g>
+    </g>
+  </defs>
+  <polygon points="385,0 415,0 600,620 200,620" fill="url(#beamW)" filter="url(#beamBlur)" style="mix-blend-mode:screen"/>
+  <g filter="url(#rough)"><path id="burst" fill="#3a0b15" stroke="#9e1830" stroke-width="4" opacity=".9"/></g>
+  <use href="#guitar" transform="translate(400 430) rotate(-28) scale(.62) translate(-500 0)"/>
+  <use href="#guitar" transform="translate(400 430) rotate(28) scale(-.62 .62) translate(-500 0)"/>
+  <!-- ring behind word -->
+  <g filter="url(#brush)" fill="none" stroke-linecap="round">
+    <ellipse cx="400" cy="395" rx="330" ry="120" stroke="#d4153a" stroke-width="9" transform="rotate(-8 400 395)"/>
+  </g>
+  <g id="torn"></g>
+</svg>
+<div id="word">빌런짓</div>
+<svg class="full" viewBox="0 0 800 800" fill="none">
+  <path d="M332 260 L322 182 L366 220 L400 160 L434 220 L478 182 L468 260 Z" stroke="#ff2b4f" stroke-width="12" stroke-linejoin="round" filter="url(#brush)" transform="rotate(-4 400 220)"/>
+  <path d="M600 210 L570 280 L598 278 L566 350 L636 252 L606 254 L636 210Z" fill="#f1ebe8"/>
+  <g fill="#fff"><path d="M205 300 L208 322 L230 325 L208 328 L205 350 L202 328 L180 325 L202 322Z"/></g>
+</svg>
+<div id="tape"><span>VILLAIN<b>zit</b></span></div>
+<svg class="full" viewBox="0 0 800 800" style="pointer-events:none">
+  <rect width="800" height="800" filter="url(#grime)" opacity=".25"/>
+  <rect width="800" height="800" filter="url(#grain)" opacity=".3" style="mix-blend-mode:overlay"/>
+</svg>
+<svg id="guide" class="full" viewBox="0 0 800 800"><path d="M0 0H800V800H0Z M400 0 A400 400 0 1 0 400.1 0Z" fill="#000" fill-rule="evenodd" opacity=".75"/><circle cx="400" cy="400" r="400" fill="none" stroke="#00e5ff" stroke-width="3" stroke-dasharray="10 8"/></svg>
+</div>
+<script>
+let s=4242;const rnd=()=>(s=(s*16807)%2147483647)/2147483647;
+const NS='http://www.w3.org/2000/svg',g=document.getElementById('torn');
+function ring(r0,amp,fill){ // filled area outside a ragged circle of radius r0
+  let w=0,d='M-10 -10H810V810H-10Z M';const n=220;
+  for(let i=0;i<=n;i++){const a=i/n*Math.PI*2;w=w*.8+(rnd()-.5)*amp*.6;const r=r0+(i===n?0:w+(rnd()-.5)*amp*.3);
+    d+=(i?'L':'')+(400+Math.cos(a)*r).toFixed(1)+' '+(400+Math.sin(a)*r).toFixed(1)+' ';}
+  const p=document.createElementNS(NS,'path');p.setAttribute('d',d+'Z');p.setAttribute('fill',fill);p.setAttribute('fill-rule','evenodd');g.appendChild(p);}
+ring(372,18,'#bdb5b2');ring(364,20,'#8a1428');ring(364,20,'url(#dots)');ring(394,12,'#3a0b15');
+{let d='',n=30;for(let i=0;i<n;i++){const a=i/n*Math.PI*2-Math.PI/2,R=i%2?150:205+rnd()*55;
+ d+=(i?'L':'M')+(400+Math.cos(a)*R*1.35).toFixed(1)+' '+(395+Math.sin(a)*R*.9).toFixed(1);}
+ document.getElementById('burst').setAttribute('d',d+'Z');}
+if(location.hash==='#guide')document.body.classList.add('guide');
+document.fonts.ready.then(()=>{document.body.dataset.ready='1'});
+</script></body></html>
