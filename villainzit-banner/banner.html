@@ -158,19 +158,40 @@
       <g stroke="#e9e3df" stroke-width="1.5" opacity=".75"><path d="M78 -10 H860M78 -3.5 H860M78 3.5 H860M78 10 H860"/></g>
       <path d="M60 60 L110 95" stroke="#e9e3df" stroke-width="4" stroke-linecap="round"/>
     </g>
+    <!-- bass: offset body, long neck, 4 strings, inline tuners -->
+    <g id="bass">
+      <path d="M10 0 C10 -90 60 -130 140 -124 C190 -120 205 -92 245 -86 C275 -82 300 -140 345 -128 C372 -120 356 -78 320 -44 L320 44 C352 76 360 110 334 122 C300 130 276 92 245 88 C205 84 190 124 140 126 C60 130 10 90 10 0Z"
+        fill="#e9e3df" stroke="#d4153a" stroke-width="8"/>
+      <path d="M80 -70 C150 -96 230 -60 300 -40 L300 40 C230 60 150 96 80 70Z" fill="#1c1517"/>
+      <rect x="150" y="-44" width="30" height="88" rx="5" fill="#e9e3df" stroke="#1c1517" stroke-width="4"/>
+      <rect x="230" y="-40" width="26" height="80" rx="5" fill="#e9e3df" stroke="#1c1517" stroke-width="4"/>
+      <rect x="316" y="-17" width="700" height="34" fill="#1c1517" stroke="#d4153a" stroke-width="6"/>
+      <path d="M1012 -22 L1150 -30 C1170 -30 1176 -10 1166 0 L1150 24 L1012 22Z" fill="#1c1517" stroke="#d4153a" stroke-width="6"/>
+      <g fill="#e9e3df"><circle cx="1040" cy="-38" r="9"/><circle cx="1072" cy="-40" r="9"/><circle cx="1104" cy="-42" r="9"/><circle cx="1136" cy="-44" r="9"/></g>
+      <g stroke="#e9e3df" stroke-width="2.5" opacity=".85"><path d="M60 -10 H1020M60 -3.5 H1020M60 3.5 H1020M60 10 H1020"/></g>
+    </g>
+    <!-- synth keyboard -->
+    <g id="keys">
+      <rect x="0" y="0" width="360" height="150" rx="10" fill="#1c1517" stroke="#d4153a" stroke-width="6"/>
+      <rect x="14" y="14" width="332" height="10" fill="#9e1830"/>
+      <g fill="#e9e3df"><circle cx="30" cy="42" r="8"/><circle cx="56" cy="42" r="8"/><circle cx="82" cy="42" r="8"/><circle cx="108" cy="42" r="8"/></g>
+      <rect x="250" y="34" width="90" height="18" rx="3" fill="#d4153a"/>
+      <g id="wk"></g>
+    </g>
   </defs>
   <!-- jagged burst -->
   <g filter="url(#rough)"><path id="burst" fill="#5a0f1e" stroke="#d4153a" stroke-width="6" opacity=".8"/></g>
   <g>
     <use href="#guitar" transform="translate(1280 735) rotate(-26) scale(1.18) translate(-500 0)"/>
     <use href="#guitar" transform="translate(1280 735) rotate(26) scale(-1.18 1.18) translate(-500 0)"/>
+    <use href="#bass" transform="translate(615 930) rotate(-58) scale(.64) translate(-170 0)"/>
+    <use href="#keys" transform="translate(1672 712) rotate(-9) scale(1.1)"/>
   </g>
 </svg>
 
 <!-- doodles (rock bits only) -->
 <svg class="full" viewBox="0 0 2560 1440" fill="none" stroke="#f1ebe8" stroke-linecap="round" stroke-linejoin="round">
   <g filter="url(#brush)">
-    <path d="M610 590 L640 512 L662 590 L592 542 L684 540 Z" stroke-width="6"/>
     <path d="M1940 900 L1962 842 L1980 900 L1928 864 L1994 862 Z" stroke-width="5"/>
   </g>
   <!-- solid lightning bolts -->
@@ -195,15 +216,13 @@
       <path d="M930 240 C 870 330 560 400 300 380 C 220 372 170 355 140 330" stroke="#d4153a" stroke-width="14" stroke-linecap="round"/>
     </g>
   </svg>
-  <svg class="abs" style="left:96px;top:-26px;width:180px;height:118px;transform:rotate(-12deg)" viewBox="0 0 200 130" fill="none">
+  <svg class="abs" style="left:330px;top:-92px;width:230px;height:150px;transform:rotate(-6deg);z-index:2" viewBox="0 0 200 130" fill="none">
     <path d="M18 112 L10 30 L62 72 L100 8 L138 72 L190 30 L180 112 Z" stroke="#e0244a" stroke-width="12" stroke-linejoin="round" filter="url(#brush)"/>
   </svg>
   <div id="tape-en"><span>VILLAIN<b>zit</b></span></div>
 </div>
 
 <!-- ======= COPY ======= -->
-<div class="label"><span>빌런즈가 놀고먹는</span><span><em>런닝타임</em> ▶</span></div>
-<div class="cta"><span>뭔 짓 하는지</span><span>보러오세요</span></div>
 
 <!-- sparkles -->
 <svg class="full" viewBox="0 0 2560 1440" style="mix-blend-mode:screen">
@@ -265,6 +284,11 @@ add(poly(tornEdge(-20,1340,900,1390,24,5),[[900,1460],[-20,1460]]),'#1f1a1b');
 const r=document.createElementNS(NS,'rect');r.setAttribute('width',2560);r.setAttribute('height',1440);
 r.setAttribute('filter','url(#grime)');r.setAttribute('opacity','.0');g.appendChild(r);
 
+// keyboard keys
+{const wk=document.getElementById('wk');let h='';const n=15,w=332/n;
+ for(let i=0;i<n;i++)h+=`<rect x="${14+i*w}" y="62" width="${w-2}" height="76" fill="#e9e3df"/>`;
+ [0,1,3,4,5,7,8,10,11,12].forEach(i=>h+=`<rect x="${14+i*w+w*.68}" y="62" width="${w*.62}" height="46" fill="#141012"/>`);
+ wk.innerHTML=h;}
 // jagged burst behind the word
 {let d='',n=34;for(let i=0;i<n;i++){const a=i/n*Math.PI*2-Math.PI/2,R=(i%2?240:330+rnd()*90)*1;
  const x=1280+Math.cos(a)*R*1.45,y=715+Math.sin(a)*R*.72; d+=(i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1);}
